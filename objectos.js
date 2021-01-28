@@ -38,3 +38,12 @@ var persona2 ={
 
 
     imprimirNombreEnMayuscula2({nombre : 'Martha' ,apellido:'rodriguez'})// declaramos el objecto al momento de enviarlo
+
+
+
+    function imprimirNombreEnMayuscula5(persona1){ // recibimos el objecto 
+        var {nombre}= persona1   // se define el nombre de la variable y el objecto que contiene esa propiedad   
+        var { nombre: nombreNuevo } = persona1 //  para cambiar el nombre de la variable yq eu no se aigual ala propiedad
+        console.log(nombre)
+        
+    }
