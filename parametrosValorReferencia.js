@@ -14,7 +14,7 @@ function cumpleanos(persona){
 
 return {   // crea un nuevo objecto modificando la edad al nuevo objecto con todos datos originales 
 ...persona,
-edad :persona.edad+1 // definimos los datos que se cambiaran en el objecto
+edad :persona.edad+1 // definimos los datos que se cambiaran en el objecto  
 
 }
    
@@ -24,5 +24,5 @@ edad :persona.edad+1 // definimos los datos que se cambiaran en el objecto
 
 personavieja=cumpleanos(persona)
 
-
-
+//////Parámetros como referencia o como valor
+//Cuando los objetos se pasan como una referencia, estos se modifican fuera de la función. Para solucionar esto se puede crear un objeto diferente. Esto lo podemos hacer colocando tres puntos antes del nombre. Ej …persona.
