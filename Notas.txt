@@ -84,3 +84,26 @@ console.log(`${jose.peso.toFixed(1)} KG final del año` )
 
 
 debugger  // navegar en el codigo como un paso a paso y navegar en los metodos que invoca importante se coloca en un punto del codigo 
+
+
+//arrays  Los arrays son estructuras que nos permiten organizar elementos dentro de una collección. 
+//Estos elementos pueden ser números, strings, booleanos, objetos, et
+
+var personas =[sacha,alan,martin,dario,vicky,paula] // defnicion del array
+
+// acceder alos atributos de un array
+console.log(personas[0].altura)  
+console.log(personas[0]['altura'])
+
+// implementado foreach
+personas.forEach(persona => {
+    console.log(persona.altura) // impresion de aca uno de los datos de una elemnto del array
+});
+
+
+// recorriendo array por un for
+
+for (let index = 0; index < personas.length; index++) {
+    console.log(`${personas[index].nombre} mide ${personas[index].altura}`) // impresion de aca uno de los datos de una elemnto del arra
+    
+}
