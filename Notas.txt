@@ -80,3 +80,7 @@ adelgazar(jose)
 }
 
 console.log(`${jose.peso.toFixed(1)} KG final del año` )
+
+
+
+debugger  // navegar en el codigo como un paso a paso y navegar en los metodos que invoca importante se coloca en un punto del codigo 

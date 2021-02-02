@@ -9,26 +9,28 @@ var jose={
     
     console.log(`${jose.peso} KG inicio de año` )
     
-    const INCREMENTO_PESO = 0.2  //constantes 
+    const INCREMENTO_PESO = 0.3  //constantes 
     const DIAS_DEL_AÑO = 365
     
     const aumentarDePeso = persona => persona.peso += INCREMENTO_PESO   // metodo de aumento de peso 
     const adelgazar = persona => persona.peso -= INCREMENTO_PESO        // metodo de adelgazar de peso 
+    const comeMucho = () => Math.random() <0.3
+    const realizarDeporte = () => Math.random() <0.4
     
-    for (var i = 1 ; i <= DIAS_DEL_AÑO ; i++){ //inicio del for
-    
-    var random = Math.random()   // numero aleatorio  
-    
-    if (random < 0.25) {     // ingreso del 25% para hacer el aumento de peso
-       aumentarDePeso(jose)
-    
-    }else if (random <0.5) {    // ingreso del 25% para hacer el adelgazar de peso
-    // adelgaza
-    adelgazar(jose)
-    
+    const META = jose.peso -3
+    var dias=0
+    while (jose.peso > META){
+
+        if(comeMucho()){
+            aumentarDePeso(jose)
+
+        }
+        if(realizarDeporte()){
+            adelgazar(jose)
+
+        }
+        dias +=1
+        debugger  // navegar en el codigo como un paso a paso y navegar en los metodos que invoca 
     }
     
-    
-    }
-    
-    console.log(`${jose.peso.toFixed(1)} KG final del año` )
+    console.log(`${jose.peso.toFixed(1)} KG final peso dias ${dias}` )
