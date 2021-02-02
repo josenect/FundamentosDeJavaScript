@@ -60,6 +60,18 @@ var persona2 ={
     function esMayorDeEdad(persona){   //se divide el metodo inicial en dos retorna un true o false 
         return persona.edad>=MAYORIA_DE_EDAD  
     }
+ // funcion anonyma 
+
+ const esMayorDeEdad=function (persona){   //se divide el metodo inicial en dos retorna un true o false 
+    return persona.edad>=MAYORIA_DE_EDAD  
+}
+//funcin arrow  Arrow Functions que permiten una nomenclatura más corta para escribir expresiones de funciones
+const esMayorDeEdad= (persona)=>{   //se divide el metodo inicial en dos retorna un true o false 
+    return persona.edad>=MAYORIA_DE_EDAD  
+}
+//funcion arrow disminuido 
+const esMayorDeEdad = persona=> persona.edad>=MAYORIA_DE_EDAD  //se divide el metodo inicial en dos retorna un true o false 
+       
 
 
     function imprimirSiEsMayorDeEdad(persona){

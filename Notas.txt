@@ -20,3 +20,24 @@
         }
 
     }
+
+
+
+    //funcin arrow Arrow Functions que permiten una nomenclatura más corta para escribir expresiones de funciones
+const esMayorDeEdad= (persona)=>{   //se divide el metodo inicial en dos retorna un true o false 
+    return persona.edad>=MAYORIA_DE_EDAD  
+}
+//funcion arrow disminuido 
+const esMayorDeEdad = persona=> persona.edad>=MAYORIA_DE_EDAD  //se divide el metodo inicial en dos retorna un true o false 
+       
+
+
+    function imprimirSiEsMayorDeEdad(persona){
+
+        if(esMayorDeEdad(persona)){    // si es true la respuesta del metodo esMayorDeEdad ingre a el if 
+             console.log(`${persona.nombre} es mayor de Edad`)
+        }else{
+            console.log(`${persona.nombre} no es mayor de edad`)
+        }
+
+    }
