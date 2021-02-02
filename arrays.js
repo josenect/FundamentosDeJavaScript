@@ -36,18 +36,34 @@ var paula = {
 
 var personas =[sacha,alan,martin,dario,vicky,paula] // defnicion del array
 
-// al filtrar generamos un nuevo array con la condicion que se cumple
+// function map  con arrow function
 
-// tipos de funcion para el filtro 
+//1 con realizando las cambios en los objectos
+const pasarAlturaCms = persona => {   //se retorna un nuevo objeco modificado, si se retorna simplemente persona.altura=persona.altura*100 modifica el objeto global y envia un array nuevo las mofificaciones y al modificar cualquiero array el otro tambien sufre el cambio por star en la misma ubicacion de memoria
+   
+    persona.altura*=100
+    return persona
+}
+//2 realizando los cambios en un solo objecto
+const pasarAlturaCms = persona => {   //se retorna un nuevo objeco sin modificar el array que llega , sin estar en la misma ubicacion de memoria
+   
+    return {
+        ...persona ,
+        altura : persona.altura*=100
 
-const esAlta = persona => persona.altura > 1.8                   // funcion arrow
-var personasAltas = personas.filter(function (persona){          // function anonyma desde el filter
+    } 
+}
 
-    return persona.altura > 1.8
-})  
+//3 resumiendo la funtcion arrow function
+
+const pasarAlturaCms = persona => ({  
+        ...persona ,
+        altura : persona.altura*=100 
+    })
 
 
 
 
-var personasAltas = personas.filter(esAlta)  // se filtra dependiendo la condicion de la funcion esAlta
+var personasCms =personas.map(pasarAlturaCms)
 
+console.log(personasCms)
