@@ -36,19 +36,18 @@ var paula = {
 
 var personas =[sacha,alan,martin,dario,vicky,paula] // defnicion del array
 
-// acceder alos atributos de un array
-console.log(personas[0].altura)  
-console.log(personas[0]['altura'])
+// al filtrar generamos un nuevo array con la condicion que se cumple
 
-// implementado foreach
-personas.forEach(persona => {
-    console.log(persona.altura) // impresion de aca uno de los datos de una elemnto del array
-});
+// tipos de funcion para el filtro 
+
+const esAlta = persona => persona.altura > 1.8                   // funcion arrow
+var personasAltas = personas.filter(function (persona){          // function anonyma desde el filter
+
+    return persona.altura > 1.8
+})  
 
 
-// recorriendo array por un for
 
-for (let index = 0; index < personas.length; index++) {
-    console.log(`${personas[index].nombre} mide ${personas[index].altura}`) // impresion de aca uno de los datos de una elemnto del arra
-    
-}
+
+var personasAltas = personas.filter(esAlta)  // se filtra dependiendo la condicion de la funcion esAlta
+
