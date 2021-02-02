@@ -36,34 +36,12 @@ var paula = {
 
 var personas =[sacha,alan,martin,dario,vicky,paula] // defnicion del array
 
-// function map  con arrow function
+//metodos reduce 
 
-//1 con realizando las cambios en los objectos
-const pasarAlturaCms = persona => {   //se retorna un nuevo objeco modificado, si se retorna simplemente persona.altura=persona.altura*100 modifica el objeto global y envia un array nuevo las mofificaciones y al modificar cualquiero array el otro tambien sufre el cambio por star en la misma ubicacion de memoria
-   
-    persona.altura*=100
-    return persona
-}
-//2 realizando los cambios en un solo objecto
-const pasarAlturaCms = persona => {   //se retorna un nuevo objeco sin modificar el array que llega , sin estar en la misma ubicacion de memoria
-   
-    return {
-        ...persona ,
-        altura : persona.altura*=100
-
-    } 
+const reducer = (acum,persona)=>{  // llega y valor por relacion el acum que es propio del metod reduce el 0 y el objecto del array que es persona el cual nose envia en el metodo pero el reduce sabe que necesita iterarlo
+    return acum+persona.altura
 }
 
-//3 resumiendo la funtcion arrow function
+var pesoPersonas =personas.reduce(reducer ,0)// necesita los parametro 1 el metodo 2 el valor del contador para el inicio 
 
-const pasarAlturaCms = persona => ({  
-        ...persona ,
-        altura : persona.altura*=100 
-    })
-
-
-
-
-var personasCms =personas.map(pasarAlturaCms)
-
-console.log(personasCms)
+console.log(pesoPersonas)

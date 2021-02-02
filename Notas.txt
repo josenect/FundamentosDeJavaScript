@@ -121,6 +121,17 @@ var personasAltas = personas.filter(function (persona){          // function ano
 })  
 
 
+//metodos reduce 
+
+const reducer = (acum,persona)=>{  // llega y valor por relacion el acum que es propio del metod reduce el 0 y el objecto del array que es persona el cual nose enviar en el metodo pero el reduce sabe que necesita iterarlo
+    return acum+persona.altura
+}
+
+var pesoPersonas =personas.reduce(reducer ,0)// necesita los parametro 1 el metodo 2 el valor del contador para el inicio 
+
+console.log(pesoPersonas)
+
+
 
 
 var personasAltas = personas.filter(esAlta)  // se filtra dependiendo la condicion de la funcion esAlta
