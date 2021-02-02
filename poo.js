@@ -1,6 +1,3 @@
-//inicio de poo
-
-
 // en js los objectos de clases son prototipos
 
 function Persona(nombre, apellido){           // definicion de constructor 
