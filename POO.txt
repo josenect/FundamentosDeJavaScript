@@ -30,3 +30,18 @@ Persona.prototype.soyAlto = () => {
 Persona.prototype.soyAlto = function () {
     return this.altura > 1.8         
 }   
+//herencia antes de ECMAScript 2015
+
+
+function heredaDe(prototipoHijo,prototipoPadre){  // herencia prototipal se recibe las clases hija y pabre
+    var fn = function (){}                        //
+    fn.prototype=prototipoPadre.prototype
+    prototipoHijo.prototype=new fn
+    prototipoHijo.prototype.constructor =prototipoHijo 
+
+}
+
+heredaDe(Desarollador,Persona) // se llama antes de pisar los metodos de la clase hija
+
+
+// vefiricar las relaciones d herencia que existen con Persona.prototype ene el atributo del objecto __proto__

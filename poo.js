@@ -1,3 +1,13 @@
+function heredaDe(prototipoHijo,prototipoPadre){  // herencia prototipal se recibe las clases hija y pabre
+    var fn = function (){}                        //
+    fn.prototype=prototipoPadre.prototype
+    prototipoHijo.prototype=new fn
+    prototipoHijo.prototype.constructor =prototipoHijo 
+
+}
+
+
+
 // en js los objectos de clases son prototipos
 
 function Persona(nombre, apellido){           // definicion de constructor 
@@ -27,6 +37,20 @@ Persona.prototype.soyAlto = function () {
     return this.altura > 1.8         
 }   
 //
+
+
+function Desarollador(nombre,apellido){
+
+    this.nombre = nombre                     //defincion de de los atributos 
+    this.apellido = apellido
+
+}
+heredaDe(Desarollador,Persona) // se llama antes de pisar los metodos de la clase hija y despues de crear la clase hija
+
+
+Desarollador.altura.saludar = function(){
+    console.log(`me llamo ${this.nombre } y soy desarollador`)
+}
 
 
 rosa.saludar()
