@@ -8,8 +8,11 @@
 <body>
 
 
-    <script src="poo.js">
-
+    <script>
+                    // tiempo en JavaScript eventloop y callback
+        console.log('a')  ///cargando aplicacion principal 
+        setTimeout(console.log('Estoy en espera en el Callback'),2000)  // con este  metodo enviamos esta funcion al callback para que se ejecute en 2segundos luego de cargar la aplicacion "cuando el event lopp o cola de tareas este vacia"
+        console.log('a')  ///cargando aplicacion principal 
     </script>
     
 </body>
