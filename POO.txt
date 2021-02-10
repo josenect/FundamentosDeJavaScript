@@ -80,7 +80,7 @@ class Desarollador extends Persona{   // clase hija palabra reservada extends se
 
     } 
     
-    saludar(){                             // se define el mismo nombre del metodo para cambair su funcionalidad internamente principio de polimorfismo
+    saludar(){                             // se define el mismo nombre del metodo para cambiar su funcionalidad internamente principio de polimorfismo
         console.log(`me llamo ${this.nombre } y soy desarollador`)
 
     }

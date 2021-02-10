@@ -12,5 +12,19 @@ const onPeopleResponse = function(persona){   // metodo que manipula la data que
     console.log(`Hola Soy ${persona.name}`)   // impresion de nombre de la persona
 }
 
-$.get(lukeUrl,opts,onPeopleResponse)           //metodo de jquery para relizar la peticion se envia al callback hasta que tiene una respuesta
-  // recibe ruta , tipo de respuesta y el moto callback
+
+
+function obtenerPersonaje(id){
+  const url = `${API_URl}${PEOPLE_URL.replace(':id',id)}`  // ruta del recurso y id de elemento 
+  $.get(url,opts,onPeopleResponse)              //metodo de jquery para relizar la peticion se envia al callback hasta que tiene una respuesta
+
+}
+
+// asiscronismo se piden los elementos pero no se sabe en que orden llegan todo depende de la respuesta del servidor // Resulta que JavaScript 
+//es un lenguaje de programación asincrono. Lo que quiere decir esto es que al ejecutar código JavaScript el hilo de ejecución continuará a pesar
+// de encontrarse en situaciones en las que no obtenga un resultado inmediatamente.
+obtenerPersonaje(1)
+obtenerPersonaje(2)
+obtenerPersonaje(3)
+obtenerPersonaje(4)
+
