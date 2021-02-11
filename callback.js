@@ -20,28 +20,36 @@ function obtenerPersonaje(id){
   })
 }
 
+async function obtenerPersonajes(){ // agregar el async 
+
+  var ids =[1,2,3,4,5,6,7,8,9]
+  
+  var promesas = ids.map(id=> obtenerPersonaje(id)) // creamos el array de promesas 
+   
+  try {
+    
+   var personajes= await Promise.all(promesas)   // await detiene la ejecucion del programa hasta que se tenga la respuesta de todas estas promesas
+    console.log(personajes)
+
+  } catch (id) {
+    console.log(`erro en el promesa ${id}`)     
+  }
+
+}
+
 
 /*
+Async-await: lo último en asincronismo
 
-Múltiples promesas en paralelo
-
-Para hacer el llamado a múltiples promesas, nos apoyamos en un array de ids con el que luego construimos otro arreglo de Promesas
-, que pasaremos como parámetro a Promise.all( arregloDePromesas ), con las promesas podemos encadenar llamadas en paralelo, algo
- que no es posible usando callbacks.
+Async-await es la manera más simple y clara de realizar tareas asíncronas. Await detiene la ejecución 
+del programa hasta que todas las promesas sean resueltas. Para poder utilizar esta forma, hay que colocar 
+async antes de la definición de la función, y encerrar el llamado a Promises.all() dentro de un bloque try … catch.
 
 */
 
 
+obtenerPersonajes()
 
-var ids =[1,2,3,4,5,6,7,8,9]
-
-var promesas = ids.map(id=> obtenerPersonaje(id)) // creamos el array de promesas 
-Promise.all(promesas).then(personajes => console.log(personajes))     // pasamos el array de promesas para que se ejecuten cada resultado 
-                                                                      //de la promesa lo recibimos en el then como personajes y pasamos a la function 
-                                                                      //que es imprimir en consola el objecto de esa promesa 
-  .catch(function(){
-  console.log("erro en el promesa ")               //con el catch se dispara si una de las promesas no es ejecutada de la manera correcta o falla
-})
 
 
 
