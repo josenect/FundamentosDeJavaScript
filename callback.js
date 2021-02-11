@@ -11,7 +11,7 @@ function obtenerPersonaje(id){
     
     const url = `${API_URl}${PEOPLE_URL.replace(':id',id)}`  // ruta del recurso y id de elemento 
     $.get(url,opts,function (data){
-
+      data=data.result.properties 
         resolve(data)   //se ejecuta cuando resuelve la promesa con la respuesta 
        
     }).fail(()=>reject(id))   // reject cuando se genera error en la promesa
@@ -20,40 +20,28 @@ function obtenerPersonaje(id){
   })
 }
 
-/*
-Promesas Encadenadas
 
-A diferencia de los callbacks en el CallbackHell, que terminan estando anidados unos dentro de otros, cuando se usan 
-Promesas la ejecución de las llamadas no se hacen de manera anidada sino de manera encadenada, al mismo nivel una debajo
- de la otra, lo que hace que el código sea mucho más legible y mantenible.
+/*
+
+Múltiples promesas en paralelo
+
+Para hacer el llamado a múltiples promesas, nos apoyamos en un array de ids con el que luego construimos otro arreglo de Promesas
+, que pasaremos como parámetro a Promise.all( arregloDePromesas ), con las promesas podemos encadenar llamadas en paralelo, algo
+ que no es posible usando callbacks.
+
 */
 
-obtenerPersonaje(1).then(function(persona){    // con el metodo then propio de la promesa obtenemos el resultado que promesa este metodo requiere la function como parametro
-  persona=persona.result.properties        // solo tomo los datos de la persona
-  console.log(`Hola Soy ${persona.name}`)   // impresion de nombre de la persona
-  return obtenerPersonaje(2)                // al ser un return este then se convierte en una promesa que tendra un then diferente 
-})
-.then(function(persona){    // con el metodo then propio de la promesa obtenemos el resultado que promesa este metodo requiere la function como parametro
-  persona=persona.result.properties        // solo tomo los datos de la persona
-  console.log(`Hola Soy ${persona.name}`)   // impresion de nombre de la persona
-  return obtenerPersonaje(3)                 // al ser un return este then se convierte en una promesa que tendra un then diferente 
-})
-.then(function(persona){    // con el metodo then propio de la promesa obtenemos el resultado que promesa este metodo requiere la function como parametro
-  persona=persona.result.properties        // solo tomo los datos de la persona
-  console.log(`Hola Soy ${persona.name}`)   // impresion de nombre de la persona
-  return obtenerPersonaje(4)                 // al ser un return este then se convierte en una promesa que tendra un then diferente |
-})
-.then(function(persona){    // con el metodo then propio de la promesa obtenemos el resultado que promesa este metodo requiere la function como parametro
-  persona=persona.result.properties        // solo tomo los datos de la persona
-  console.log(`Hola Soy ${persona.name}`)   // impresion de nombre de la persona
-  
-})
 
 
-.catch(function(id){                       // con el metodo cath propio de la promesa obtenemos el error que genero la promesa este metodo requiere la function como parametro
-  console.log(`error al generar la consulta del id ${id}`)
+var ids =[1,2,3,4,5,6,7,8,9]
+
+var promesas = ids.map(id=> obtenerPersonaje(id)) // creamos el array de promesas 
+Promise.all(promesas).then(personajes => console.log(personajes))     // pasamos el array de promesas para que se ejecuten cada resultado 
+                                                                      //de la promesa lo recibimos en el then como personajes y pasamos a la function 
+                                                                      //que es imprimir en consola el objecto de esa promesa 
+  .catch(function(){
+  console.log("erro en el promesa ")               //con el catch se dispara si una de las promesas no es ejecutada de la manera correcta o falla
 })
-            
 
 
 
