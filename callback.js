@@ -8,23 +8,41 @@ const opts = {crossDomain: true}                             // tipo de request 
 
 const onPeopleResponse = function(persona){   // metodo que manipula la data que llegada dela API
 
+   
+}
+
+
+
+function obtenerPersonaje(id,callback){
+  const url = `${API_URl}${PEOPLE_URL.replace(':id',id)}`  // ruta del recurso y id de elemento 
+
+  $.get(url,opts,function(persona){ //metodo de jquery para relizar la peticion se envia al callback hasta que tiene una respuesta
+
     persona=persona.result.properties        // solo tomo los datos de la persona
     console.log(`Hola Soy ${persona.name}`)   // impresion de nombre de la persona
+
+if (callback) {
+  callback()
 }
 
 
-
-function obtenerPersonaje(id){
-  const url = `${API_URl}${PEOPLE_URL.replace(':id',id)}`  // ruta del recurso y id de elemento 
-  $.get(url,opts,onPeopleResponse)              //metodo de jquery para relizar la peticion se envia al callback hasta que tiene una respuesta
+  })              
 
 }
+//Una manera de asegurar que se respete la secuencia en que hemos realizado múltiples tareas es utilizando callbacks,
+// con lo que se ejecutará luego, en cada llamada. Lo importante es que el llamado al callback se haga a través de una 
+//función anónima. Sin embargo, al hacerlo de esta manera generamos una situación poco deseada llamada CallbackHell.
 
-// asiscronismo se piden los elementos pero no se sabe en que orden llegan todo depende de la respuesta del servidor // Resulta que JavaScript 
-//es un lenguaje de programación asincrono. Lo que quiere decir esto es que al ejecutar código JavaScript el hilo de ejecución continuará a pesar
-// de encontrarse en situaciones en las que no obtenga un resultado inmediatamente.
-obtenerPersonaje(1)
-obtenerPersonaje(2)
-obtenerPersonaje(3)
-obtenerPersonaje(4)
+// se llaman los datos del siguiente personaje solo si ya llego las respuesta del primero mediante callback 
+
+obtenerPersonaje(1,function(){
+  obtenerPersonaje(2,function(){
+    obtenerPersonaje(3,function(){
+      obtenerPersonaje(4)
+    })
+  })
+})
+
+
+
 
