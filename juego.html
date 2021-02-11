@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simon Dice</title>
+    <style>
+      body {
+        margin: 0;
+        background: #dedede;
+        display: flex;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .gameboard {
+        height: 100vh;
+        width: 100vh;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto;
+        max-height: 60vh;
+        max-width: 60vh;
+      }
+
+      .color {
+        width: 50%;
+        height: 50%;
+        display: inline-block;
+      }
+
+      .left {
+        float: left;
+      }
+
+      .right {
+        float: left;
+      }
+
+      .celeste {
+        background: #22a6b3;
+      }
+
+      .celeste.light {
+        background: #7ed6df;
+      }
+
+      .violeta {
+        background: #be2edd;
+      }
+
+      .violeta.light {
+        background: #e056fd;
+      }
+
+      .naranja {
+        background: #f0932b;
+      }
+
+      .naranja.light {
+        background: #ffbe76;
+      }
+
+      .verde {
+        background: #6ab04c;
+      }
+
+      .verde.light {
+        background: #badc58;
+      }
+
+      .btn-start {
+        width: 400px;
+        height: 100px;
+        background: #ecf0f1;
+        color: #2c3e50;
+        font-size: 2.5rem;
+        position: absolute;
+        top: calc(50% - 50px);
+        left: calc(50% - 200px);
+      }
+
+      .hide {
+        display: none;
+      }
+    </style>
+</head>
+  <body>
+    <div class="gameboard">
+      <div id="celeste" class="color celeste left" data-color="celeste"></div>
+      <div id="violeta" class="color violeta right" data-color="violeta"></div>
+      <div id="naranja" class="color naranja left" data-color="naranja"></div>
+      <div id="verde" class="color verde right" data-color="verde"></div>
+      <button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">Empezar a jugar!</button>
+    </div>
+    <script>
+
+      // recibiendo los botones del DOM en constantes
+      const celeste = document.getElementById('celeste')
+      const violeta = document.getElementById('violeta')
+      const naranja = document.getElementById('naranja')
+      const verde = document.getElementById('verde')
+      const btnEmpezar = document.getElementById('btnEmpezar')
+
+      class Juego {
+        constructor() {// el constructor dispara el juego y oculta el boton de emepzar en el metodo inicializar()
+          this.inicializar()
+        }
+
+        inicializar() {
+          btnEmpezar.classList.add('hide')
+        }
+      }
+// clase principal crea el tipo nuevo objecto eso inicializa el constructor  
+      function empezarJuego() {
+      
+        var juego = new Juego()
+      }
+    </script>
+  <script type="text/javascript">(function(){window['__CF$cv$params']={r:'61fbd1dcffd03eeb',m:'9e0eac32acd5fffb36802c283b4948ace8d8797a-1613022914-1800-AV/n/OUNhGDq6Rv9FbvR5YT5wmnHVxeY4zoGa0OxF2uA57rN0NjUFx1IqGmAEyptkLPEONzKdpoWdQOxss2UJmgwgzwgyu6/EO+WNXpv+Dhqnwr1hE99FhkbNDx8eWe3gJ3CO1aSPrcHwdrwgxVpftFG3eaoChbDSSXfo4VVGcYI5Kyf3K/tzkrshx+XK5KFiGcSJl7XzGdpPNjU1bNzzjvA92pl7mm+s2L/hF4WbdK2fVio6Sju5cXmuHfneo2fp1GoYjYXkM0Uo1rd71Fy20N2vYf9tgPVRXLFSIz4J/9pjQ/73vYcmP/i/Fxq8da51Q==',s:[0xac3dfc4c82,0x60f6f489db],}})();</script></body>
+</html>
