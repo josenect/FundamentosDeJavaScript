@@ -112,8 +112,9 @@
 
         // metodo de inicio oculta el boton que se oprimio para el inicio ,establece el nivel de inicio,y asigna las propiedades de colores alos elemntos del DOM
         inicializar() {
+          //this.elegirColor=this.elegirColor.bind(this)// otra forma de enlasar los datos del motodo a la clase juego
           btnEmpezar.classList.add('hide')
-          this.nivel = 10
+          this.nivel = 1
           this.colores = {
             celeste : celeste,
             violeta : violeta,
@@ -129,6 +130,7 @@
 // realiza iluminacion de el nuevo color
         siguienteNivel(){
           this.iluminarSecuencia()
+          this.agregarEventosClick()
 
 
         }
@@ -168,6 +170,20 @@
         // apaga el boton
         apagarColor(color){
           this.colores[color].classList.remove('light')
+        }
+
+        agregarEventosClick(){
+
+          this.colores.celeste.addEventListener('click',this.elegirColor.bind(this))  // el .bing () es para no perder la referencia del this de la clase juego ya que si no se pasa el this el elemento del this sera el boton y no la clase
+          this.colores.violeta.addEventListener('click',this.elegirColor.bind(this))
+          this.colores.naranja.addEventListener('click',this.elegirColor.bind(this))
+          this.colores.verde.addEventListener('click',this.elegirColor.bind(this))
+        }
+
+        elegirColor(ev){
+
+            
+
         }
 
       }
