@@ -101,27 +101,75 @@
       const verde = document.getElementById('verde')
       const btnEmpezar = document.getElementById('btnEmpezar')
 
+
+      // clase Principal del juego se inician los metodos de la misma
       class Juego {
         constructor() {// el constructor dispara el juego y oculta el boton de emepzar en el metodo inicializar()
-          this.inicializar()
-          this.generarSecuencia()
+          this.inicializar()   // metodo de inicio oculta el boton que se oprimio para el inicio ,establece el nivel de inicio,y asigna las propiedades de colores alos elemntos del DOM
+          this.generarSecuencia() //genera el array que sera la secuencia del color
+          this.siguienteNivel() // realiza el cambio de nivel que ilumina el nuevo color
         }
 
+        // metodo de inicio oculta el boton que se oprimio para el inicio ,establece el nivel de inicio,y asigna las propiedades de colores alos elemntos del DOM
         inicializar() {
           btnEmpezar.classList.add('hide')
-          this.nivel = 1
+          this.nivel = 10
           this.colores = {
             celeste : celeste,
             violeta : violeta,
-            naraja  : naranja,
+            naranja  : naranja,
             verde   : verde
           } 
         }
-        
+        //genera el array que sera la secuencia del color      
         generarSecuencia(){
           this.secuencia = new Array(10).fill(0).map(n => Math.floor(Math.random()*4)) // generacion de array un numeor randon menor  de 4
         
         }
+// realiza iluminacion de el nuevo color
+        siguienteNivel(){
+          this.iluminarSecuencia()
+
+
+        }
+        // transforma el id del array en el color 
+        trasformarNumeroColor(id){
+          
+          switch (id) {
+            case 0:
+              return 'celeste'
+              
+            case 1 :
+              return 'violeta'
+
+            case 2 :
+              return 'naranja'
+              
+            case 3:
+              return 'verde'
+          }
+
+        }
+        // ilumina los botones al iniciar el nivel
+        iluminarSecuencia(){
+
+          for (let index = 0; index < this.nivel; index++) {
+            const color = this.trasformarNumeroColor(this.secuencia[index])
+            setTimeout(()=>this.iluminarColor(color),1000 * index)
+          }
+
+        }
+        // prende el boton y apaga el boton
+        iluminarColor(color){
+          this.colores[color].classList.add('light')
+          setTimeout(()=> this.apagarColor(color),350)
+
+        }
+        // apaga el boton
+        apagarColor(color){
+          this.colores[color].classList.remove('light')
+        }
+
       }
 // clase principal crea el tipo nuevo objecto eso inicializa el constructor  
       function empezarJuego() {
