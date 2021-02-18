@@ -91,6 +91,7 @@
       <div id="naranja" class="color naranja left" data-color="naranja"></div>
       <div id="verde" class="color verde right" data-color="verde"></div>
       <button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">Empezar a jugar!</button>
+
     </div>
     <script>
 
@@ -100,6 +101,7 @@
       const naranja = document.getElementById('naranja')
       const verde = document.getElementById('verde')
       const btnEmpezar = document.getElementById('btnEmpezar')
+      const ULTIMO_NIVEL = 10
 
 
       // clase Principal del juego se inician los metodos de la misma
@@ -107,7 +109,7 @@
         constructor() {// el constructor dispara el juego y oculta el boton de emepzar en el metodo inicializar()
           this.inicializar()   // metodo de inicio oculta el boton que se oprimio para el inicio ,establece el nivel de inicio,y asigna las propiedades de colores alos elemntos del DOM
           this.generarSecuencia() //genera el array que sera la secuencia del color
-          this.siguienteNivel() // realiza el cambio de nivel que ilumina el nuevo color
+          setTimeout(this.siguienteNivel.bind(this),500) // realiza el cambio de nivel que ilumina el nuevo color
         }
 
         // metodo de inicio oculta el boton que se oprimio para el inicio ,establece el nivel de inicio,y asigna las propiedades de colores alos elemntos del DOM
@@ -124,11 +126,12 @@
         }
         //genera el array que sera la secuencia del color      
         generarSecuencia(){
-          this.secuencia = new Array(10).fill(0).map(n => Math.floor(Math.random()*4)) // generacion de array un numeor randon menor  de 4
+          this.secuencia = new Array(ULTIMO_NIVEL).fill(0).map(n => Math.floor(Math.random()*4)) // generacion de array un numeor randon menor  de 4
         
         }
 // realiza iluminacion de el nuevo color
         siguienteNivel(){
+          this.subnivel = 0
           this.iluminarSecuencia()
           this.agregarEventosClick()
 
@@ -149,6 +152,25 @@
               
             case 3:
               return 'verde'
+          }
+
+        }
+
+                // transforma el color a id 
+                trasformarColorNumero(color){
+          
+          switch (color) {
+            case 'celeste':
+              return 0
+              
+            case 'violeta' :
+              return 1
+
+            case 'naranja' :
+              return 2
+              
+            case 'verde':
+              return 3
           }
 
         }
@@ -180,11 +202,44 @@
           this.colores.verde.addEventListener('click',this.elegirColor.bind(this))
         }
 
-        elegirColor(ev){
+        eliminarEventosClick(){
+          this.colores.celeste.removeEventListener('click',this.elegirColor.bind(this)) 
+          this.colores.violeta.removeEventListener('click',this.elegirColor.bind(this))
+          this.colores.naranja.removeEventListener('click',this.elegirColor.bind(this))
+          this.colores.verde.removeEventListener('click',this.elegirColor.bind(this))
 
+        }
+
+        elegirColor(ev){
+          const nombreColor =ev.target.dataset.color
+          const numeroColor = this.trasformarColorNumero(nombreColor)
+          this.iluminarColor(nombreColor)
+          if (numeroColor === this.secuencia[this.subnivel]){
+
+            this.subnivel++
+
+            if(this.subnivel === this.nivel){
+              this.nivel++
+              this.eliminarEventosClick()
+
+              if (this.nivel === (ULTIMO_NIVEL + 1)) {
+
+                // gano
+                
+              }else{
+                setTimeout(this.siguienteNivel.bind(this),1500)
+              }
+
+            }
+
+          }else{
+            //persdio
+          }
             
 
         }
+
+      
 
       }
 // clase principal crea el tipo nuevo objecto eso inicializa el constructor  
