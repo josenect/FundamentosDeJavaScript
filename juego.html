@@ -93,7 +93,9 @@
       <button id="btnEmpezar" class="btn-start" onclick="empezarJuego()">Empezar a jugar!</button>
 
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script>
+
 
       // recibiendo los botones del DOM en constantes
       const celeste = document.getElementById('celeste')
@@ -110,6 +112,7 @@
           this.inicializar()   // metodo de inicio oculta el boton que se oprimio para el inicio ,establece el nivel de inicio,y asigna las propiedades de colores alos elemntos del DOM
           this.generarSecuencia() //genera el array que sera la secuencia del color
           setTimeout(this.siguienteNivel.bind(this),500) // realiza el cambio de nivel que ilumina el nuevo color
+          console.log(this.secuencia)
         }
 
         // metodo de inicio oculta el boton que se oprimio para el inicio ,establece el nivel de inicio,y asigna las propiedades de colores alos elemntos del DOM
@@ -117,6 +120,7 @@
           //this.elegirColor=this.elegirColor.bind(this)// otra forma de enlasar los datos del motodo a la clase juego
           btnEmpezar.classList.add('hide')
           this.nivel = 1
+          
           this.colores = {
             celeste : celeste,
             violeta : violeta,
@@ -203,6 +207,7 @@
         }
 
         eliminarEventosClick(){
+          console.log("eliminando eventos click")
           this.colores.celeste.removeEventListener('click',this.elegirColor.bind(this)) 
           this.colores.violeta.removeEventListener('click',this.elegirColor.bind(this))
           this.colores.naranja.removeEventListener('click',this.elegirColor.bind(this))
@@ -210,23 +215,31 @@
 
         }
 
-        elegirColor(ev){
+        elegirColor({target}){
+
+          console.log("el eleg", target)
           const nombreColor =ev.target.dataset.color
           const numeroColor = this.trasformarColorNumero(nombreColor)
+          console.log("elegido ",numeroColor)
+          console.log("secuencia ",this.secuencia[this.subnivel])
           this.iluminarColor(nombreColor)
           if (numeroColor === this.secuencia[this.subnivel]){
-
+           console.log("subnivel inicion" ,this.subnivel)
             this.subnivel++
+       
 
             if(this.subnivel === this.nivel){
+              console.log("subi de nivel")
               this.nivel++
               this.eliminarEventosClick()
 
               if (this.nivel === (ULTIMO_NIVEL + 1)) {
 
                 // gano
+                this.ganoElJuego()
                 
               }else{
+                console.log("estoy en salida de subi de nivel")
                 setTimeout(this.siguienteNivel.bind(this),1500)
               }
 
@@ -234,11 +247,25 @@
 
           }else{
             //persdio
+            this.eliminarEventosClick()
+            this.perdioElJuego()
+            console.log("fine")
+            
           }
             
 
         }
 
+        perdioElJuego(){
+
+          swal ( "Perdiste el juego" ,  "" ,  "error" )
+        }
+
+        ganoElJuego(){
+
+        swal ( "Ganaste el juego" ,  "" ,  "success" )
+
+        }
       
 
       }
