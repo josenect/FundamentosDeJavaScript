@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>        
+
+        var jose = {
+            nombre: 'jose Efrey',
+            apellido: 'bonilla',
+            edad: 23
+        } 
+
+// var es de scope de funcion y es re-asignable
+// let es de scope de bloque y es re-asignable
+//const es de scope de bloque y no es re-asignable
+
+// videos de sacha en you tube  https://www.youtube.com/watch?v=bvkY9ey83yY
+
+        function esMayorDeEdad(persona){
+            if (persona.edad>=18) {
+                var mensaje="Es Mayor de Edad"
+               console.log(mensaje)
+            }else{
+                var mensaje="Es Menor de Edad"
+                var mensaje2
+                console.log(mensaje)
+            }
+            console.log(mensaje2)
+           
+        }
+
+        esMayorDeEdad(jose)
+        
+    </script>
+    
+</body>
+</html>
