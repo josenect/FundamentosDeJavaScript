@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function diasEntreFechas(fecha1, fecha2){
+            const unDia= 1000 * 60 * 60 * 24
+            const diferencia =Math.abs(fecha1 - fecha2)  // funcion debuelve el valor absoluto que es el numor positivo de la operacion
+
+
+            return Math.floor(diferencia/unDia)
+        }
+
+        const hoy = new Date()
+
+        const nacimiento = new Date(1997,9,12)
+    </script>
+    
+</body>
+</html>
