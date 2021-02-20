@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function crearsaludo(finalSaludo){  /// recuerda el valor que tenia la frase al pasarla la funcion de return
+            return function (nombre){
+                 console.log(`Hola ${nombre} ${finalSaludo}`)
+            }
+        }
+
+        const saludoArgentino = crearsaludo('che') // saludo argentido es una funcion la funcion es la anonima la cual recordara el valor que se paso
+        const saludocolombiano = crearsaludo('Parce')  
+// videos de mas conocimiento https://www.youtube.com/watch?v=JXG_gQ0OF74
+// ya que saludoArgentido es una funcion  se ejecuta normal mente pero s epasa elvalor que espero
+         
+                saludoArgentino('jose') // nos responde Hola jose y la bariable que pasamos al crear esta funcion de tipo de expresion 
+                saludocolombiano('jose')
+
+    </script>
+</body>
+</html>
