@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+            const jose = {
+            nombre : 'jose efrey',
+            apellido: 'rodriguez',
+            edad: 28
+            }   
+
+            function saludar(){
+
+                console.log(`Hola , mi nombre es ${this.nombre}`)
+            }
+
+            const saludarAJose = saludar.bind(jose) // se crea una una funcion con el cambio de this
+            saludar.call(jose, ...) // realiza la ejecucion de una vez se envian las variables segidos de , la primera es el this al que cambia
+            saludar.apply(jose,[])// realiza la ejecucion de una vez la primera es el this al que cambia ,las variables que necesita el metodos se envian por array
+
+
+    </script>
+</body>
+</html>
