@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+// Caso 1 - cuando comienzo una nueva línea escribiendo un array en la línea anterior va ";" si no da error
+console.log('Lorem ipsum dolor...')
+;[1, 2, 3].forEach(n => {console.log(n * 2)} )
+
+
+// Caso 2 - Si comienzo una línea con comillas invertidas "`", en la línea anterior o al principio de la misma va ";". 
+const pablo = 'Pablo'
+console.log('Lorem ipsum dolor...')
+;`${nombre} es un desarrollador.`
+
+// Esta manera funciona
+function calcularDoble(numero) {
+		return {
+			original: numero, doble: numero * 2
+		}
+	}
+	//Esta no, o sea, da ERROR
+	function calcularDoble(numero) {
+		return                           // no puede quedar en otra linea el {
+		{
+			original: numero, doble: numero * 2
+		}
+	}
+    </script>
+</body>
+</html>
